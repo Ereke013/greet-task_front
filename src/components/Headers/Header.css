@@ -1,0 +1,18 @@
+.headerr{
+    position: sticky;
+    top:0;
+    z-index: 2;
+}
+
+.navlink{
+    text-decoration: none;
+    color: darkgrey;
+}
+.navlink:hover{
+    color: white;
+}
+
+.leftside{
+    position: absolute;
+    right: 0;
+}
