@@ -24,7 +24,7 @@ function Header(props) {
                             <>
                                 <Nav className="mr-auto">
                                     <Nav.Link>
-                                        <Link to="/students" className="navlink">
+                                        <Link to="/home/allstudents" className="navlink">
                                             All students
                                         </Link>
                                     </Nav.Link>
@@ -37,12 +37,12 @@ function Header(props) {
                                 </Nav>
                                 <Nav className="leftside">
                                     <Nav.Link>
-                                        <Link to="/admin" className="navlink">
-                                            Admin
-                                        </Link>
+                                        {auth.user.firstName} {auth.user.lastName}
                                     </Nav.Link>
-                                    <Nav.Link>
-                                        Yerlan Yerzhansa
+                                    <Nav.Link onClick={() => {
+                                        logout();
+                                    }}>
+                                        Logout  <span className="sr-only">(current)</span>
                                     </Nav.Link>
                                 </Nav>
                             </>

@@ -1,3 +1,4 @@
+import {Redirect} from "react-router-dom";
 import axios from "axios";
 
 const AuthActionType = {
@@ -9,14 +10,20 @@ const AuthActionType = {
     LOGIN_FAIL: "LOGIN_FAIL",
 };
 
-const RegisterAuthAction = (userState, history, setErrorHandler)=>{
-    return async(dispatch)=>{
-        try{
+const RegisterAuthAction = (userState, history, setErrorHandler) => {
+    console.log("user in auth action: ", userState);
+    return async (dispatch) => {
+        try {
+            console.log("user in auth action2: ", userState);
             const res = await axios.post("/register", userState);
-            const {data} = res;
-            dispatch({type: AuthActionType.REGISTER_SUCCESS, payload:data});
-            history.push("/");
-        }catch (error) {
+            const { data } = res;
+            console.log("I am here11")
+            dispatch({ type: AuthActionType.REGISTER_SUCCESS, payload: data });
+            console.log("I am here")
+            return(<Redirect push to="/login" />);
+
+            // history.push("/login");
+        } catch (error) {
             if (error.response) {
                 dispatch({
                     type: AuthActionType.REGISTER_FAIL,

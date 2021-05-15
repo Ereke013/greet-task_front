@@ -1,31 +1,34 @@
+import { AuthActionType } from "../actions/AuthAction";
 import axios from "axios";
-import {AuthActionType} from "../actions/AuthAction";
 
 const authState = {
     isLoggedIn: false,
     user: {
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
-        age:0,
-        ava: "",
+        ava_picture: "",
+        age: 0,
+        aClass:{},
+        jwtToken: "",
         expires_at: "",
     },
 };
-
 const getAuthState = () => {
     const auth = localStorage.getItem("auth");
     try {
         const authobj = JSON.parse(auth);
         console.log("norma2: ", authobj);
-        const { expires_at } = authobj.user;
-        if (new Date(expires_at) > new Date()) {
+        const { jwtToken } = authobj.user;
+        console.log(jwtToken);
+        // if (new Date(expires_at) > new Date()) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
-            console.log("norma: ", expires_at);
-            return authobj;
-        }
-        return authState;
+        console.log("norma: ", jwtToken);
+        return authobj;
+        // }
+        // return authState;
     } catch (error) {
         return authState;
     }
@@ -40,6 +43,9 @@ const authreducer = (state = newAuth, action) => {
                 isLoggedIn: true,
                 user: action.payload,
             };
+            // axios.defaults.headers.common[
+            //   "Authorization"
+            // ] = `Bearer ${action.payload.jwttoken}`;
             localStorage.setItem("auth", JSON.stringify(newAuthState));
             return newAuthState;
 
@@ -53,8 +59,11 @@ const authreducer = (state = newAuth, action) => {
             const loginAuthState = {
                 isLoggedIn: true,
                 user: action.payload,
-                expires_at: new Date().now(),
+                expires_at: "its time",
             };
+            axios.defaults.headers.common[
+                "Authorization"
+                ] = `Bearer ${action.payload.jwtToken}`;
             localStorage.setItem("auth", JSON.stringify(loginAuthState));
             // localStorage.setItem("currentPage", '');
             localStorage.setItem("timeJWT", Date.now());
