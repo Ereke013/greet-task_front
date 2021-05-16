@@ -11,8 +11,8 @@ import {connect} from "react-redux";
 function Students({auth}) {
     const authh = auth;
     let {id} = useParams();
-    console.log("cl_id");
-    console.log(id);
+    // console.log("cl_id");
+    // console.log(id);
     const [students, setStudents] = useState([]);
     const [classes, setClasses] = useState([]);
 
@@ -35,15 +35,15 @@ function Students({auth}) {
         setLoading(true);
         setTimeout(() => {
             setLoading(false)
-        }, 2500);
+        }, 3000);
     }, [isAdded])
 
     useEffect(() => {
         async function fetchData() {
             let request = await axios.get("/api/usersbyClass/" + id);
 
-            console.log("req");
-            console.log(request);
+            // console.log("req");
+            // console.log(request);
             setStudents(request.data);
         }
 
@@ -51,8 +51,8 @@ function Students({auth}) {
     }, [isAdded])
 
     const createPupil = () => {
-        console.log("new student");
-        console.log(newStudent);
+        // console.log("new student");
+        // console.log(newStudent);
         setShow(false);
         axios.post("/api/addUsers", newStudent).then(res => {
 
@@ -77,8 +77,8 @@ function Students({auth}) {
 
     async function handleShow() {
         let allU = await axios.get("/api/allClass");
-        console.log("allP");
-        console.log(allU.data);
+        // console.log("allP");
+        // console.log(allU.data);
         setClasses(allU.data);
         setShow(true);
     }
@@ -168,7 +168,6 @@ function Students({auth}) {
                             </form>
                         </Modal>
                         <div className="row">
-                            {console.log("keldi go")}
 
                             {
                                 students.length > 0 ?
@@ -196,7 +195,7 @@ function Students({auth}) {
                                                     authh?.user.roles.find(o => o.role === 'ROLE_ADMIN') ?
                                                         <CardActions>
                                                             <Button size="medium" color="danger" onClick={() => {
-                                                                console.log(student.id);
+
                                                                 let res = axios.delete("/api/deleteUser/" + student.id).then(ress => {
                                                                     setIsAdded(!isAdded);
                                                                 });

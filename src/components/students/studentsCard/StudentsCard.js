@@ -3,8 +3,8 @@ import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typog
 import axios from "axios";
 
 function StudentsCard({id, firstName, lastName, age, ava_picture, classNum}) {
-    console.log("card")
-    console.log(id,firstName,lastName,age,ava_picture,classNum);
+    // console.log("card")
+    // console.log(id,firstName,lastName,age,ava_picture,classNum);
     return(
             <div className="col-3 mt-3">
                 <Card style={{maxWidth:"100%"}}>
@@ -28,7 +28,7 @@ function StudentsCard({id, firstName, lastName, age, ava_picture, classNum}) {
                             Edit
                         </Button>
                         <Button size="medium" color="primary" onClick={() => {
-                            console.log(id);
+                            // console.log(id);
                             let res = axios.delete("/api/deleteUser/" + id).then(ress => {
                                 // setIsAdded(!isAdded);
                             });

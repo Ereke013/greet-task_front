@@ -11,15 +11,15 @@ const AuthActionType = {
 };
 
 const RegisterAuthAction = (userState, history, setErrorHandler) => {
-    console.log("user in auth action: ", userState);
+    // console.log("user in auth action: ", userState);
     return async (dispatch) => {
         try {
-            console.log("user in auth action2: ", userState);
+            // console.log("user in auth action2: ", userState);
             const res = await axios.post("/register", userState);
             const { data } = res;
-            console.log("I am here11")
+            // console.log("I am here11")
             dispatch({ type: AuthActionType.REGISTER_SUCCESS, payload: data });
-            console.log("I am here")
+            // console.log("I am here")
             return(<Redirect push to="/login" />);
 
             // history.push("/login");

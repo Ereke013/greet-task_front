@@ -26,8 +26,8 @@ function Classes() {
     useEffect(() => {
         async function fetchData() {
             let request = await axios.get("/api/allClass");
-            console.log("req");
-            console.log(request);
+            // console.log("req");
+            // console.log(request);
             setClasses(request.data);
         }
 
@@ -35,8 +35,8 @@ function Classes() {
     }, [isAdded])
 
     const createClass = () => {
-        console.log("new class");
-        console.log(newClass);
+        // console.log("new class");
+        // console.log(newClass);
         setShow(false);
         axios.post("/api/addClass?class_name=" + newClass).then(res => {
 

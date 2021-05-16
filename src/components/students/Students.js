@@ -12,8 +12,8 @@ import {connect} from "react-redux";
 function Students({auth}) {
     const authh = auth;
     let {id} = useParams();
-    console.log("cl_id");
-    console.log(id);
+    // console.log("cl_id");
+    // console.log(id);
     const [students, setStudents] = useState([]);
     const [classes, setClasses] = useState([]);
 
@@ -35,8 +35,8 @@ function Students({auth}) {
     useEffect(() => {
         setLoading(true);
         setTimeout(() => {
-            setLoading(false)
-        }, 2500);
+            {setLoading(false)}
+        }, 3000);
     }, [isAdded])
 
     useEffect(() => {
@@ -47,8 +47,8 @@ function Students({auth}) {
             } else {
                 request = await axios.get("/api/allUsers");
             }
-            console.log("req");
-            console.log(request);
+            // console.log("req");
+            // console.log(request);
             setStudents(request.data);
         }
 
@@ -56,8 +56,8 @@ function Students({auth}) {
     }, [isAdded])
 
     const createPupil = () => {
-        console.log("new student");
-        console.log(newStudent);
+        // console.log("new student");
+        // console.log(newStudent);
         setShow(false);
         axios.post("/api/addUsers", newStudent).then(res => {
 
@@ -82,23 +82,23 @@ function Students({auth}) {
 
     async function handleShow() {
         let allU = await axios.get("/api/allClass");
-        console.log("allP");
-        console.log(allU.data);
+        // console.log("allP");
+        // console.log(allU.data);
         setClasses(allU.data);
         setShow(true);
     }
 
     function checkAdminRoles() {
         let userget = localStorage.getItem("auth");
-        console.log("user");
+        // console.log("user");
         const user = JSON.parse(userget);
-        console.log(user.user.roles);
+        // console.log(user.user.roles);
         const roles = user.user.roles;
         roles.map((role) => {
-            console.log("role");
-            console.log(role.role);
+            // console.log("role");
+            // console.log(role.role);
             if (role.role === "ROLE_ADMIN") {
-                console.log("true");
+                // console.log("true");
                 return true;
             }
         })
@@ -180,10 +180,10 @@ function Students({auth}) {
                                                         onChange={console.log("form group")}>
                                                 <Form.Label>Class:</Form.Label>
                                                 <Form.Control as="select" custom onChange={(e) => {
-                                                    console.log("e.target.value");
-                                                    console.log(e.target.value);
+                                                    // console.log("e.target.value");
+                                                    // console.log(e.target.value);
                                                     setNewStudent({...newStudent, a_class_id: e.target.value});
-                                                    console.log(newStudent);
+                                                    // console.log(newStudent);
                                                 }}>
                                                     <option value={null}>--SELECT--</option>
                                                     {classes.map((classs) => {
@@ -212,7 +212,8 @@ function Students({auth}) {
                             </form>
                         </Modal>
                         <div className="row">
-                            {console.log("keldi go")}
+                            {/*{console.log("keldi go")}*/}
+
                             {students.map((student) => (
                                 student.roles.find(o => o.role === 'ROLE_ADMIN') ?
                                     <></>
@@ -238,7 +239,7 @@ function Students({auth}) {
                                                 authh?.user.roles.find(o => o.role === 'ROLE_ADMIN') ?
                                                     <CardActions>
                                                         <Button size="medium" color="danger" onClick={() => {
-                                                            console.log(student.id);
+                                                            // console.log(student.id);
                                                             let res = axios.delete("/api/deleteUser/" + student.id).then(ress => {
                                                                 setIsAdded(!isAdded);
                                                             });

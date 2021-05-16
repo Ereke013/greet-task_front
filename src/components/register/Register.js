@@ -49,9 +49,9 @@ function Register(props) {
                             onSubmit={(event) => {
                                 event.preventDefault();
 
-                                console.log("after, .....", newStudent);
+                                // console.log("after, .....", newStudent);
                                 axios.post("/register", newStudent);
-                                console.log("before, .....", newStudent);
+                                // console.log("before, .....", newStudent);
                                 history.push("/login");
                                 // register(userRegister, history, setErrorHandler);
                             }}

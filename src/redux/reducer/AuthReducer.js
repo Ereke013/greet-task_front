@@ -19,13 +19,13 @@ const getAuthState = () => {
     const auth = localStorage.getItem("auth");
     try {
         const authobj = JSON.parse(auth);
-        console.log("norma2: ", authobj);
+        // console.log("norma2: ", authobj);
         const { jwtToken } = authobj.user;
-        console.log(jwtToken);
+        // console.log(jwtToken);
         // if (new Date(expires_at) > new Date()) {
         axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
-        console.log("norma: ", jwtToken);
+        // console.log("norma: ", jwtToken);
         return authobj;
         // }
         // return authState;
@@ -33,9 +33,9 @@ const getAuthState = () => {
         return authState;
     }
 };
-console.log(getAuthState());
+// console.log(getAuthState());
 const newAuth = getAuthState();
-console.log("new Auth: ", newAuth);
+// console.log("new Auth: ", newAuth);
 const authreducer = (state = newAuth, action) => {
     switch (action.type) {
         case AuthActionType.REGISTER_SUCCESS:

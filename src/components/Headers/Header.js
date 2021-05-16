@@ -8,7 +8,6 @@ import './Header.css';
 function Header(props) {
     const {auth, logout, errorHandler} = props;
     const history = useHistory();
-    console.log(auth);
     return (
         <div className="headerr">
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
