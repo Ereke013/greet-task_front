@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+## 1)Чтобы скачать с гитхаба проект и запустить, делаем следующие шаги:
+#### 1.1) Создаем пустую папку на рабочем столе(можно в других местах) и задаем любое имя.
+#### 1.2) Открываем командную строку и через командную строку переходим в ту папку который создали или заходим в эту папку и на верху стоит путь к этой папке, нажимаем на ту места и пишем cmd.
+#### 1.3) После выполнения 1.2 пункта, в командной строке пишем ' git clone https://github.com/Ereke013/greet-task_front.git '.
+#### 1.4) Появляется новая папка в котором есть проект, не закрывая командную строку пишем команду ' cd greet-task_front ', после пишем ' npm install ', после этого запускаем команду ' npm start '.
+#### 1.5) Ждём, когда запуститься сервер. После запуска сервера, автоматический заходить в браузер. Если после запуска не открылся браузер, заходим в браузере по адресу http://localhost:3000.
+#### 1.6) Видим: 
+#### ![image](https://user-images.githubusercontent.com/51377709/118414553-157a0f00-b6c7-11eb-9695-15607b3c6f54.png)
+<br />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Чтобы выполнить следующие шаги, нам понадобится серверная часть, серверная часть находится по следующей ссылке:
+#### https://github.com/Ereke013/GreetgoTask
 
-## Available Scripts
+<br />
 
-In the project directory, you can run:
+<br />
 
-### `npm start`
+## 2) Страница Login и Register:
+#### 2.1) Заходим в Login для авторизации, и в Register для регистрации.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## ** Все данные хранятся в базе данных. База находится в хосте, и эта база находится далеко от нашей местоположении, так как хост находится далеко данные может задержатся на 2-3-4сек для загрузки. Для каждого запроса от базы и для представление уходят максимум 3-4сек. **
 
-### `npm test`
+#### 2.3) На странице авторизации после ввода данных прошу подождать 2-3сек для загрузки данных.
+#### 2.4) Супер Админские данные:
+##### 2.4.1) email: admin@gmail.com, password: qweqwe.
+##### 2.4.2) email: superadmin@gmail.com, password: adminadmin.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 2.5) Registration:
+##### 2.5.1) После регистрации ссылка передается на страниц авторизации и созданному пользователю дается роль обычного юзера.
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### [ Все пароли шифруется, и авторизация проходит через jwtToken. Все ссылки проходит через безопасность, только для авторизованных пользователей. ]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 3)После авторизации:
+#### 3.1) Попадаем в домашнюю страницу.
+#### 3.2) Есть страница всех учеников и страница всех классов по которому можно смотреть в каком классе учится какие ученики.
 
-### `npm run eject`
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 4)Роли и их способности:
+#### 4.1) Админы могут добавлять учеников и классов, также могут удалять учеников.
+#### 4.2) Ученики могут просматривать список классов, учеников и добавить учеников.
+#### 4.3) Также загрузка данных могут задержатся максимум на 3-4.
