@@ -5,8 +5,10 @@ import {Button, Form, Modal} from "react-bootstrap";
 import {Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import './Classes.css';
 import {Link, useRouteMatch} from "react-router-dom";
+import {connect} from "react-redux";
 
-function Classes() {
+function Classes({auth}) {
+    let authh = auth;
     const [classes, setClasses] = useState([]);
     let {path, url} = useRouteMatch();
     const [loading, setLoading] = useState(true);
@@ -65,39 +67,47 @@ function Classes() {
                     </div>
                     :
                     <>
-                        <Button variant="primary" onClick={handleShow}>
-                            + Add New Class
-                        </Button>
-
-                        <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton={true} className="backcolorBlack">
-                                <Modal.Title>Add New Class</Modal.Title>
-                            </Modal.Header>
-                            <form onSubmit={(e)=>{
-                                e.preventDefault();
-                                createClass();
-                            }}>
-                                <Modal.Body className="backcolorBlack">
-
-                                    <div className="form-group">
-                                        <label>Class Name[Номер и символ класса]:</label>
-                                        <input className="form-control" placeholder="например, 10А ..." value={newClass}
-                                               onChange={(e) => {
-                                                   setNewClass(e.target.value)
-                                               }} required="required"/>
-                                    </div>
-
-                                </Modal.Body>
-                                <Modal.Footer className="backcolorBlack">
-                                    <Button variant="danger" onClick={handleClose}>
-                                        Cancel
+                        {
+                            authh?.user.roles.find(o => o.role === 'ROLE_ADMIN')?
+                                <>
+                                    <Button variant="primary" onClick={handleShow}>
+                                        + Add New Class
                                     </Button>
-                                    <Button variant="primary" type="submit">
-                                        Create
-                                    </Button>
-                                </Modal.Footer>
-                            </form>
-                        </Modal>
+
+                                    <Modal show={show} onHide={handleClose}>
+                                        <Modal.Header closeButton={true} className="backcolorBlack">
+                                            <Modal.Title>Add New Class</Modal.Title>
+                                        </Modal.Header>
+                                        <form onSubmit={(e)=>{
+                                            e.preventDefault();
+                                            createClass();
+                                        }}>
+                                            <Modal.Body className="backcolorBlack">
+
+                                                <div className="form-group">
+                                                    <label>Class Name[Номер и символ класса]:</label>
+                                                    <input className="form-control" placeholder="например, 10А ..." value={newClass}
+                                                           onChange={(e) => {
+                                                               setNewClass(e.target.value)
+                                                           }} required="required"/>
+                                                </div>
+
+                                            </Modal.Body>
+                                            <Modal.Footer className="backcolorBlack">
+                                                <Button variant="danger" onClick={handleClose}>
+                                                    Cancel
+                                                </Button>
+                                                <Button variant="primary" type="submit">
+                                                    Create
+                                                </Button>
+                                            </Modal.Footer>
+                                        </form>
+                                    </Modal>
+                                </>
+                                :
+                                <></>
+                        }
+
                         <div className="row">
                             {console.log("keldi go")}
                             {classes.map((classs) => (
@@ -130,4 +140,13 @@ function Classes() {
     );
 }
 
-export default Classes;
+const mapStateToProps = (state) =>
+    {
+        return {
+            auth: state.authState,
+        };
+    }
+;
+
+
+export default connect(mapStateToProps)(Classes);
