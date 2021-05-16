@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/greet-task_front/static/css/main.228f9d18.chunk.css",
+    "main.js": "/greet-task_front/static/js/main.3eb0bf0d.chunk.js",
+    "main.js.map": "/greet-task_front/static/js/main.3eb0bf0d.chunk.js.map",
+    "runtime-main.js": "/greet-task_front/static/js/runtime-main.721dc7e9.js",
+    "runtime-main.js.map": "/greet-task_front/static/js/runtime-main.721dc7e9.js.map",
+    "static/css/2.6ebea123.chunk.css": "/greet-task_front/static/css/2.6ebea123.chunk.css",
+    "static/js/2.fe611950.chunk.js": "/greet-task_front/static/js/2.fe611950.chunk.js",
+    "static/js/2.fe611950.chunk.js.map": "/greet-task_front/static/js/2.fe611950.chunk.js.map",
+    "static/js/3.2e8edb0d.chunk.js": "/greet-task_front/static/js/3.2e8edb0d.chunk.js",
+    "static/js/3.2e8edb0d.chunk.js.map": "/greet-task_front/static/js/3.2e8edb0d.chunk.js.map",
+    "index.html": "/greet-task_front/index.html",
+    "static/css/2.6ebea123.chunk.css.map": "/greet-task_front/static/css/2.6ebea123.chunk.css.map",
+    "static/css/main.228f9d18.chunk.css.map": "/greet-task_front/static/css/main.228f9d18.chunk.css.map",
+    "static/js/2.fe611950.chunk.js.LICENSE.txt": "/greet-task_front/static/js/2.fe611950.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.721dc7e9.js",
+    "static/css/2.6ebea123.chunk.css",
+    "static/js/2.fe611950.chunk.js",
+    "static/css/main.228f9d18.chunk.css",
+    "static/js/main.3eb0bf0d.chunk.js"
+  ]
+}
