@@ -29,7 +29,7 @@ function Header(props) {
                                         </Link>
                                     </Nav.Link>
                                     <Nav.Link>
-                                        <Link to="/classes" className="navlink">
+                                        <Link to="/home/allclass" className="navlink">
                                             All class
                                         </Link>
                                     </Nav.Link>

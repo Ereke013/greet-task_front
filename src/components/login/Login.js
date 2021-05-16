@@ -29,7 +29,8 @@ function Login(props) {
               <ErrorHandler
                   errorHandler={errorHandler || { hasError: false, message: "" }}
               />
-              <h4 className="font-weight-bold">Login</h4>
+              <div className="text">LogIn</div>
+              {/*<h4 className="font-weight-bold">Login</h4>*/}
               <p className="sign-in-intro">
                 <span className="text-muted">New to In App ? </span>
                 <Link to="/register">

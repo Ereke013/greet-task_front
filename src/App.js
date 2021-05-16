@@ -6,30 +6,59 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Login from "./components/login/Login";
 import HomePage from "./components/layout/HomePage";
 import {connect} from "react-redux";
+import Welcome from "./components/welcome/Welcome";
+import SimpleBar from 'simplebar';
+import 'simplebar/dist/simplebar.min.css';
+import Register from "./components/register/Register";
 
 function App(props) {
     const {auth} = props;
     return (
         <div className="app">
-            <BrowserRouter>
-                <Header/>
-                <Switch>
-                    <Route path="/login">
-                        <Login/>
-                    </Route>
 
-                    <Route path="/home">
-                        {!auth.isLoggedIn ? (
-                            // <h1 style={{ backgroundColor: "white", margin: "5% 10%" }}>
-                            //   404 NOT FOUND
-                            // </h1>
-                            <Redirect push to="/" />
-                        ) : (
-                            <HomePage/>
-                        )}
-                    </Route>
-                </Switch>
-            </BrowserRouter>
+                <BrowserRouter>
+                    <Header/>
+                    <Switch>
+
+                        <Route exact path="/">
+                            {
+                                auth.isLoggedIn?
+                                    <Redirect push to="/home"/>
+                                    :
+                                    <Welcome/>
+                            }
+
+                        </Route>
+                        <Route path="/login">
+                            {
+                                auth.isLoggedIn?
+                                    <Redirect push to="/home"/>
+                                    :
+                                    <Login/>
+                            }
+
+                        </Route>
+                        <Route path="/register">
+                            {
+                                auth.isLoggedIn?
+                                    <Redirect push to="/home"/>
+                                    :
+                                    <Register/>
+                            }
+
+                        </Route>
+                        <Route path="/home">
+                            {!auth.isLoggedIn ? (
+                                // <h1 style={{ backgroundColor: "white", margin: "5% 10%" }}>
+                                //   404 NOT FOUND
+                                // </h1>
+                                <Redirect push to="/"/>
+                            ) : (
+                                <HomePage/>
+                            )}
+                        </Route>
+                    </Switch>
+                </BrowserRouter>
         </div>
     );
 }

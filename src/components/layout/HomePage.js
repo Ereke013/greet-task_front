@@ -2,6 +2,8 @@ import React from "react";
 import './HomePage.css';
 import {Link, Route, Switch, useRouteMatch} from "react-router-dom";
 import Students from "../students/Students";
+import Classes from "../classes/Classes";
+import ClassStudents from "../classes/ClassStudents";
 
 function HomePage(){
     let {path, url} = useRouteMatch();
@@ -24,22 +26,18 @@ function HomePage(){
                       <div className="home__center">
                           <Switch>
                               <Route exact path={path}>
-                                  <h1 style={{textAlign:"center", paddingTop:"10%", paddingBottom:"10%"}}>Welcome to admin page</h1>
+                                  <h2 style={{alignItems:"center", fontSize:"55px", padding:"10%"}}>Welcome to school page</h2>
+                              </Route>
+
+                              <Route exact path={`${path}/allclass`}>
+                                  <Classes />
+                              </Route>
+                              <Route  path={`${path}/allclass/:id`}>
+
+                                  <ClassStudents />
                               </Route>
                               <Route exact path={`${path}/allstudents`}>
                                   <Students />
-                              </Route>
-                              <Route path={`${path}/users/:id`}>
-                                  {/*<Edit_Users_Admin />*/}
-                              </Route>
-                              <Route exact path={`${path}/allclass`}>
-                                  {/*<News_Admin />*/}
-                              </Route>
-                              <Route exact path={`${path}/friends`}>
-                                  {/*<Friends_Admin />*/}
-                              </Route>
-                              <Route exact path={`${path}/messages`}>
-                                  {/*<Messages_Admin />*/}
                               </Route>
                           </Switch>
 
